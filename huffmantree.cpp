@@ -40,6 +40,9 @@ HuffmanTree::HuffmanTree(const std::map<char, int>& counts){
 };
 
 void HuffmanTree::draw() const{
+    std::cout << "---------------------------------\n";
+    print_tree(root);
+    std::cout << "---------------------------------\n";
 };
 
 std::string HuffmanTree::get_code(char ch) const{
