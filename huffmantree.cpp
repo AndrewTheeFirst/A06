@@ -1,4 +1,3 @@
-#include <string>
 #include <iostream>
 #include <queue>   // For std::priority_queue
 
@@ -12,6 +11,10 @@ struct compare_function{
         return (node1->get_frequency() > node2->get_frequency());
     }
 };
+
+HuffmanTree::~HuffmanTree(){
+    delete root;
+}
 
 HuffmanTree::HuffmanTree(const std::map<char, int>& counts){
     std::priority_queue<HuffmanNode*, std::vector<HuffmanNode*>, compare_function> queue;
