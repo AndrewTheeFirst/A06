@@ -13,9 +13,35 @@ struct compare_function{
     }
 };
 
-std::priority_queue<HuffmanNode, std::vector<HuffmanNode>, compare_function> queue1;
+HuffmanTree::HuffmanTree(const std::map<char, int>& counts){
+    std::priority_queue<HuffmanNode*, std::vector<HuffmanNode*>, compare_function> queue;
+    auto begin = counts.begin(), end = counts.end();
+    int total_num_chars = 0;
+    double char_frequency;
+    for (auto location = begin; location != end; location++){
+        total_num_chars += location->second;
+    }
+    for (auto location = begin; location != end; location++){
+        char_frequency = static_cast<double>(location->second) / total_num_chars;
+        HuffmanNode* node = new LeafNode(location->first, char_frequency);
+        queue.push(node);
+    }
 
-// Implement the methods of the HuffmanTree class here.
+    HuffmanNode* left, * right, * head;
+    for (int size = queue.size(); size > 1; size--){
+        left = queue.top();
+        queue.pop();
+        right = queue.top();
+        queue.pop();
+        head = new InteriorNode(left->get_frequency() + right->get_frequency(), left, right);
+        queue.push(head);
+    }
+    root = head;
+};
 
-// You will use a std::priority_queue to assist the Huffman
-// tree construction.
+void HuffmanTree::draw() const{
+};
+
+std::string HuffmanTree::get_code(char ch) const{
+    return root->get_code(ch);
+};

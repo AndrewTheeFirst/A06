@@ -37,7 +37,7 @@ std::string InteriorNode::get_code(char c) const{
     }
     current_code = right->get_code(c);
 	if (current_code != NO_MATCH){
-        return "0" + current_code;
+        return "1" + current_code;
     }
     return NO_MATCH;
 };

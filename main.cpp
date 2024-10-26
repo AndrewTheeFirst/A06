@@ -6,6 +6,17 @@
 
 
 int main() {
+    std::map<char, int> letter_map;
+    letter_map.insert({'a', 21});
+    letter_map.insert({'b', 49});
+    letter_map.insert({'c', 1});
+    letter_map.insert({'d', 29});
+    HuffmanTree* tree = new HuffmanTree(letter_map);
+    std::cout << "a:" + tree->get_code('a') + "\n";
+    std::cout << "b:" + tree->get_code('b') + "\n";
+    std::cout << "c:" + tree->get_code('c') + "\n";
+    std::cout << "d:" + tree->get_code('d') + "\n";
+    
     // 1. Get the text and count all the letters in the text
     //    (place in a std::map object).
 

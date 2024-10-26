@@ -9,8 +9,9 @@ std::string LeafNode::to_string() const{
 };
 
 std::string LeafNode::get_code(char c) const{
-	if (c != character){ return NO_MATCH; }
+	if (c != character){
 		return NO_MATCH;
+	}
 	return "";
 };
 
